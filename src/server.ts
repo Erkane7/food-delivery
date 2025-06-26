@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use("/api/foods", foodRouter);
-app.use("/api/users", userRouter);
-app.use("/api/food-categories", foodCategoryRouter);
+app.use("/food", foodRouter);
+app.use("/users", userRouter);
+app.use("/food-category", foodCategoryRouter);
 
 const startServer = async () => {
   try {

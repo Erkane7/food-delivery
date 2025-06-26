@@ -5,10 +5,15 @@ export const createFood = async (req: Request, res: Response) => {
   const { name, category, price, image, ingredients } = req.body;
 
   try {
-    const newFood = new Food({ name, category, price, image, ingredients });
-    const savedFood = await newFood.save();
+    const newFood = await new Food({
+      name,
+      category,
+      price,
+      image,
+      ingredients,
+    }).save();
 
-    res.status(201).json({ success: true, food: savedFood });
+    res.status(201).json({ success: true, food: newFood });
   } catch (error) {
     console.error("Create food error:", error);
     res

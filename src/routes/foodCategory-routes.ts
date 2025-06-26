@@ -6,7 +6,7 @@ import { updateFoodCategory } from "../controllers/foodCategory/update-fc";
 
 export const foodCategoryRouter = express.Router();
 
-foodCategoryRouter.post("/createCategory", createFoodCategory);
+foodCategoryRouter.post("/", createFoodCategory);
 
 foodCategoryRouter.delete("/:categoryId", deleteFoodCategory);
 

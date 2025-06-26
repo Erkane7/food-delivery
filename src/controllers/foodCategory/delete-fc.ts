@@ -9,7 +9,11 @@ export const deleteFoodCategory = async (req: Request, res: Response) => {
 
     res
       .status(200)
-      .json({ success: true, message: "Category deleted successfully." });
+      .json({
+        success: true,
+        message: "Category deleted successfully.",
+        deleted,
+      });
   } catch (error) {
     res
       .status(500)
