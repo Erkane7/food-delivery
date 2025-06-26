@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import User from "../../models/user";
-import mongoose from "mongoose";
 
 export const getUser = async (req: Request, res: Response) => {
   const { userId } = req.params;

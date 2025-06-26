@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Food from "../../models/food";
-import mongoose from "mongoose";
 
 export const updateFood = async (req: Request, res: Response) => {
   const { foodId } = req.params;
