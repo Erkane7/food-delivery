@@ -1,9 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { foodRouter } from "./routes/food-routes";
+
 import { userRouter } from "./routes/user-routes";
 import { foodCategoryRouter } from "./routes/foodCategory-routes";
+import { foodRouter } from "./routes/food-routes";
+import { orderRoutes } from "./routes/order-routes";
 
 dotenv.config();
 
@@ -15,6 +17,7 @@ app.use(express.json());
 app.use("/food", foodRouter);
 app.use("/users", userRouter);
 app.use("/food-category", foodCategoryRouter);
+app.use("/order", orderRoutes);
 
 const startServer = async () => {
   try {

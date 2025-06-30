@@ -5,15 +5,13 @@ export const deleteFoodCategory = async (req: Request, res: Response) => {
   const { categoryId } = req.params;
 
   try {
-    const deleted = await FoodCategory.findByIdAndDelete(categoryId);
+    const deleteFoodCategory = await FoodCategory.findByIdAndDelete(categoryId);
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Category deleted successfully.",
-        deleted,
-      });
+    res.status(200).json({
+      success: true,
+      message: "Category deleted successfully.",
+      deleteFoodCategory,
+    });
   } catch (error) {
     res
       .status(500)

@@ -9,7 +9,8 @@ export const deleteFood = async (req: Request, res: Response) => {
 
     res
       .status(200)
-      .json({ success: true, message: "Food deleted successfully." });
+      .json({ success: true, message: "Food deleted successfully." }),
+      deletedFood;
   } catch (error) {
     res
       .status(500)

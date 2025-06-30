@@ -5,12 +5,9 @@ export const createUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ email });
+    const newUser = await new User({ username, email, password }).save();
 
-    const newUser = new User({ username, email, password });
-    const saved = await newUser.save();
-
-    res.status(201).json({ success: true, user: saved });
+    res.status(201).json({ success: true, user: newUser });
   } catch (error) {
     res
       .status(500)
