@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+
 import { getUserById } from "../controllers/user/get-userById";
 import { updateUser } from "../controllers/user/update-user";
 import { deleteUser } from "../controllers/user/delete-user";
@@ -7,7 +8,7 @@ import { getAllUsers } from "../controllers/user/get-allUser";
 
 export const userRouter = express.Router();
 
-userRouter.post("/", createUser);
+userRouter.post("/new-user", createUser);
 
 userRouter.get("/", getAllUsers);
 

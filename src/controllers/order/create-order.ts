@@ -3,15 +3,12 @@ import Order from "../../models/order";
 
 export const createOrder = async (req: Request, res: Response) => {
   try {
-    const { user, items, totalPrice, status } = req.body;
+    const { user, items, totalPrice } = req.body;
 
     const newOrder = new Order({
       user,
       items,
       totalPrice,
-      status,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
 
     await newOrder.save();

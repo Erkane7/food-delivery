@@ -2,10 +2,18 @@ import { Request, Response } from "express";
 import User from "../../models/user";
 
 export const createUser = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { userName, email, password, address, phoneNumber, isVerified } =
+    req.body;
 
   try {
-    const newUser = await new User({ username, email, password }).save();
+    const newUser = await new User({
+      userName,
+      email,
+      password,
+      address,
+      phoneNumber,
+      isVerified,
+    }).save();
 
     res.status(201).json({ success: true, user: newUser });
   } catch (error) {

@@ -2,12 +2,9 @@ import { Request, Response } from "express";
 import Order from "../../models/order";
 
 export const updateOrder = async (req: Request, res: Response) => {
+  const { foodOrderId } = req.params;
   try {
-    const updatedOrder = await Order.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body, updatedAt: new Date() },
-      { new: true }
-    );
+    const updatedOrder = await Order.findOneAndUpdate({ foodOrderId: String });
 
     res.status(200).json({ success: true, data: updatedOrder });
   } catch (error) {

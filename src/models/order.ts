@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
+import currency from "currency.js";
 
 enum FoodOrderStatusEnum {
   PENDING = "PENDING",
@@ -12,7 +13,6 @@ export interface OrderItemDocument extends Document {
 }
 
 export interface OrderDocument extends Document {
-  foodName: { type: String; required: true };
   user: Types.ObjectId;
   items: Types.DocumentArray<OrderItemDocument>;
   totalPrice: number;
@@ -26,20 +26,30 @@ const OrderItemSchema = new Schema<OrderItemDocument>({
   quantity: { type: Number, required: true, min: 1 },
   price: { type: Number, required: true },
 });
-
-const OrderSchema = new Schema<OrderDocument>({
-  foodName: { type: String, required: true },
-  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  items: { type: [OrderItemSchema], required: true },
-  totalPrice: { type: Number, required: true },
-  status: {
-    type: String,
-    enum: Object.values(FoodOrderStatusEnum),
-    default: FoodOrderStatusEnum.PENDING,
-    required: true,
+const OrderSchema = new Schema<OrderDocument>(
+  {
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    items: { type: [OrderItemSchema], required: true },
+    totalPrice: { type: Number, required: true },
+    status: {
+      type: String,
+      enum: Object.values(FoodOrderStatusEnum),
+      default: FoodOrderStatusEnum.PENDING,
+      required: true,
+    },
   },
-  createdAt: { type: Date, default: Date.now() },
-  updatedAt: { type: Date, default: Date.now() },
+  {
+    timestamps: true,
+  }
+);
+
+OrderSchema.pre<OrderDocument>("save", function (next) {
+  const total = this.items.reduce((sum, item) => {
+    return sum.add(currency(item.price).multiply(item.quantity));
+  }, currency(0));
+
+  this.totalPrice = total.value;
+  next();
 });
 
 export default mongoose.model<OrderDocument>("Order", OrderSchema);
