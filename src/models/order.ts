@@ -17,8 +17,7 @@ export interface OrderDocument extends Document {
   items: Types.DocumentArray<OrderItemDocument>;
   totalPrice: number;
   status: "PENDING" | "CANCELLED" | "DELIVERD";
-  createdAt: Date;
-  updatedAt: Date;
+  timestamps: true,
 }
 
 const OrderItemSchema = new Schema<OrderItemDocument>({

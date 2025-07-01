@@ -16,9 +16,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
-app.use("/food", foodRouter);
-app.use("/user", userRouter);
-app.use("/food-category", foodCategoryRouter);
+app.use("/foods", foodRouter);
+app.use("/users", userRouter);
+app.use("/foodCategory", foodCategoryRouter);
 app.use("/order", orderRoutes);
 
 const startServer = async () => {

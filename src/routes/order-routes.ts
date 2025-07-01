@@ -8,12 +8,12 @@ import { createOrder } from "../controllers/order/create-order";
 
 export const orderRoutes = express.Router();
 
-orderRoutes.post("/new-order", createOrder);
+orderRoutes.post("/", createOrder);
 
 orderRoutes.get("/", getAllOrders);
 
-orderRoutes.get("/:userId", getOrderById);
+orderRoutes.get("/userId", getOrderById);
 
-orderRoutes.put("/update/:foodOrderId", updateOrder);
+orderRoutes.put("/foodOrderId", updateOrder);
 
 orderRoutes.delete("/:foodOrderId", deleteOrder);

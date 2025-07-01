@@ -11,7 +11,7 @@ foodRouter.get("/", getFood);
 
 foodRouter.get("/:foodId", getFood);
 
-foodRouter.post("/new-food", createFood);
+foodRouter.post("/", createFood);
 
 foodRouter.put("/:foodId", updateFood);
 

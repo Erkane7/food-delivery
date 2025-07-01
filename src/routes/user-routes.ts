@@ -8,7 +8,7 @@ import { getAllUsers } from "../controllers/user/get-allUser";
 
 export const userRouter = express.Router();
 
-userRouter.post("/new-user", createUser);
+userRouter.post("/", createUser);
 
 userRouter.get("/", getAllUsers);
 

@@ -8,7 +8,7 @@ import { getAllCategories } from "../controllers/foodCategory/get-allFc";
 
 export const foodCategoryRouter = express.Router();
 
-foodCategoryRouter.post("/new-category", createFoodCategory);
+foodCategoryRouter.post("/", createFoodCategory);
 
 foodCategoryRouter.get("/", getAllCategories);
 
