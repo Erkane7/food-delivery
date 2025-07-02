@@ -14,7 +14,8 @@ export const createFood = async (req: Request, res: Response) => {
     res.status(201).json({ success: true, food: savedFood });
   } catch (error) {
     console.error("Error creating food:", error);
-    res.status(500).json({ success: false, message: "Failed to create food", error });
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to create food", error });
   }
 };
-

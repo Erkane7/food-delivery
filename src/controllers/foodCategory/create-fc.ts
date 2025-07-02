@@ -1,16 +1,15 @@
 import { Request, Response } from "express";
 import FoodCategory from "../../models/foodCategory";
-import { log } from "node:console";
 
 export const createFoodCategory = async (req: Request, res: Response) => {
   const { categoryName } = req.body;
 
   try {
-    const newCategory = await new FoodCategory({
+    const category = await new FoodCategory({
       categoryName: categoryName,
     }).save();
 
-    res.status(201).json({ success: true, category: newCategory });
+    res.status(201).json({ success: true, category });
   } catch (error) {
     res
       .status(500)
