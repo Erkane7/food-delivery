@@ -12,8 +12,8 @@ foodCategoryRouter.post("/", createFoodCategory);
 
 foodCategoryRouter.get("/", getAllCategories);
 
-foodCategoryRouter.get("/:categoryId", getCategoryById);
+foodCategoryRouter.get("/categoryId", getCategoryById);
 
-foodCategoryRouter.put("/:categoryId", updateFoodCategory);
+foodCategoryRouter.put("/categoryId", updateFoodCategory);
 
-foodCategoryRouter.delete("/:categoryId", deleteFoodCategory);
+foodCategoryRouter.delete("/categoryId", deleteFoodCategory);

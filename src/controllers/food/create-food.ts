@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import Food from "../../models/food";
 
 export const createFood = async (req: Request, res: Response) => {
-  console.log("Request body:", req.body);
-
   try {
     const newFood = new Food(req.body);
     console.log("New food before save:", newFood);
@@ -19,3 +17,4 @@ export const createFood = async (req: Request, res: Response) => {
       .json({ success: false, message: "Failed to create food", error });
   }
 };
+  
